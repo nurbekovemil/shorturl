@@ -14,12 +14,12 @@ export class UrlController {
 
   @Get(':shortUrl')
   async redirectToOriginal(@Param('shortUrl') shortUrl: string, @Res() res: Response, @Req() req: Request) {
-    return await this.urlService.getOriginalUrl(shortUrl, res, req);
+    return await this.urlService.getOriginalUrl(shortUrl, res, req.ip);
   }
 
   @Get('analytics/:shortUrl')
   async getAnalytics(@Param('shortUrl') shortUrl: string) {
-    return await this.urlService.getAnanlytics(shortUrl);
+    return await this.urlService.getAnalytics(shortUrl);
   }
 
   @Get('info/:shortUrl')
